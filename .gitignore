@@ -11,6 +11,7 @@
 /[Mm]emoryCaptures/
 **/Temp/*
 **/Obj/*
+**/Logs/*
 **/Debug/*
 **/Library/*
 # Never ignore Asset meta data
