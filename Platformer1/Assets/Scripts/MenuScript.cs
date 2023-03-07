@@ -40,9 +40,12 @@ public class MenuScript : MonoBehaviour
             losePanel.SetActive(true);
             Time.timeScale = 0;
             resumeButton.gameObject.SetActive(false);
+            EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs("A0\r"));
         }
         else
         {
+            print("Game Won!");
+            EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs("A1\r"));
             panel.SetActive(true);
             winPanel.SetActive(true);
             Time.timeScale = 0;

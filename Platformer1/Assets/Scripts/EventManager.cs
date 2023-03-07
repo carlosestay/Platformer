@@ -74,7 +74,7 @@ public class EventManager : Singleton<EventManager>
         onPortOpenResult = new CustomUnityEvent();
         onGameEnd = new CustomUnityEvent();
         onLedActivator = new CustomUnityEvent();
-        Beacon();//Print a message on the consolo to show the EventManager has been created
+        Beacon();//Print a message on the console to show the EventManager has been created
     }
 
     private void Start()

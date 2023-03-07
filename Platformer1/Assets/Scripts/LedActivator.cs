@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class LedActivator : MonoBehaviour
 {
-
-
+    public static int LedCount;
 
     [SerializeField]
     GameObject flashlight, halo;
@@ -15,6 +14,7 @@ public class LedActivator : MonoBehaviour
     float onIntensity;
     [SerializeField]
     UInt16 state;
+    UInt16 prevState;
     [SerializeField]
     float yScaleON, yScaleOFF;
     [SerializeField]
@@ -31,8 +31,10 @@ public class LedActivator : MonoBehaviour
         itemLight = flashlight.GetComponentInChildren<Light>();
         itemLight.intensity = 0; 
         state = 0;
+        prevState = state;
         halo.SetActive(false);
         collisionActive = false;
+        LedCount = 0;
     }
 
     // Update is called once per frame
@@ -53,18 +55,24 @@ public class LedActivator : MonoBehaviour
             if (state == 1)
             {
                 halo.SetActive(true);
+                LedCount++;
                 transform.localScale = new Vector3(0.04f, yScaleON, 0.04f);
                 command += '1';
             }
             else
             {
                 halo.SetActive(false);
+                LedCount--;      
                 transform.localScale = new Vector3(0.04f, yScaleOFF, 0.04f);
                 command += '0';
             }
             command += '\r';
-            print(command);
+            print(LedCount);
             EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs(command));
+            if(LedCount == 3)
+            {
+                EventManager.Instance.onGameEnd.Invoke(gameObject, new CustomEventArgs(true));
+            }
         }
     }
 

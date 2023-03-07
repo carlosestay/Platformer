@@ -21,7 +21,7 @@ public class CharacterController : MonoBehaviour
         Held,
         Released,
     };
-    ButtonState upButtonm, downButton, leftButton, midButton, rightButton;
+    ButtonState upButton, downButton, leftButton, midButton, rightButton;
 
 
     
@@ -288,12 +288,12 @@ public class CharacterController : MonoBehaviour
         if (args.BoardCommand.Equals("@SU1"))
         {
             print("UP pressed");
-            upButtonm = ButtonState.Pressed;
+            upButton = ButtonState.Pressed;
         }
         if (args.BoardCommand.Equals("@SU0"))
         {
             print("UP released");
-            upButtonm = ButtonState.Released;
+            upButton = ButtonState.Released;
         }
 
         //DOWN Button
