@@ -11,7 +11,7 @@ public class MenuScript : MonoBehaviour
     Button exitButtont, restartButton, resumeButton;
 
     [SerializeField]
-    GameObject panel, losePanel;
+    GameObject panel, losePanel, winPanel;
 
 
     int menuState;
@@ -26,6 +26,7 @@ public class MenuScript : MonoBehaviour
         menuState = 0;
         panel.SetActive(false);
         losePanel.SetActive(false);
+        winPanel.SetActive(false);
         EventManager.Instance.onGameEnd.AddListener(GameEnd);
         Time.timeScale = 1;
         EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs("P0\r"));
@@ -37,6 +38,13 @@ public class MenuScript : MonoBehaviour
         {
             panel.SetActive(true);
             losePanel.SetActive(true);
+            Time.timeScale = 0;
+            resumeButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            panel.SetActive(true);
+            winPanel.SetActive(true);
             Time.timeScale = 0;
             resumeButton.gameObject.SetActive(false);
         }
