@@ -29,7 +29,7 @@ public class MenuScript : MonoBehaviour
         winPanel.SetActive(false);
         EventManager.Instance.onGameEnd.AddListener(GameEnd);
         Time.timeScale = 1;
-        EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs("P0\r"));
+        EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs("P0"));
     }
 
     private void GameEnd(GameObject arg0, CustomEventArgs arg1)
@@ -40,12 +40,12 @@ public class MenuScript : MonoBehaviour
             losePanel.SetActive(true);
             Time.timeScale = 0;
             resumeButton.gameObject.SetActive(false);
-            EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs("A0\r"));
+            EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs("A0"));
         }
         else
         {
             print("Game Won!");
-            EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs("A1\r"));
+            EventManager.Instance.onLedActivator.Invoke(gameObject, new CustomEventArgs("A1"));
             panel.SetActive(true);
             winPanel.SetActive(true);
             Time.timeScale = 0;
